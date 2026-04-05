@@ -60,7 +60,7 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           
           # Stage the specific file pattern your script generates
-          git add countries-*.csv
+          git add countries-*-*.txt
           
           # Commit the file. The '|| echo' prevents the workflow from failing if no new file was generated
           git commit -m "Automated data scrape: added new countries CSV" || echo "No changes to commit"
