@@ -14,9 +14,12 @@ def run(playwright: Playwright) -> None:
     # pageTitle = page.locator(".col-md-12").locator("h1").all_inner_texts()
     # print(pageTitle)
     
-    currentTime = datetime.datetime.now().strftime("%X")
-    currentTime = re.sub(":", "-", currentTime)
-    np.savetxt(f"countries-{currentTime}.csv", page.locator(".country").all_inner_texts(), delimiter=",", fmt="%s")
+    currentTimeHHmmss = datetime.datetime.now().strftime("%X")
+    currentTimeHHmmss = re.sub(":", "", currentTimeHHmmss)
+    
+    currentTimeDDMMYYYY = datetime.datetime.now().strftime("%d%m%Y")
+    currentTime = f"{currentTimeDDMMYYYY}-{currentTimeHHmmss}"
+    np.savetxt(f"./result/countries-{currentTime}.txt", page.locator(".country").all_inner_texts(), delimiter=",", fmt="%s")
 
     # ---------------------
     context.close()
